@@ -27,15 +27,99 @@ this assignment.  For each question supply graphical evidence, numerical summari
 
 ### Do people who believe in Love at First sight also tend to believe in Life on other planets?
 
-  
-  
-    
+$H_0$ There is no relation between people who belive in love at first sight and those who belive in life on other planets.  
+$H_A$ There is a correlation between people who belive in love at first sight and those who belive in life in other planets.
+Graphic Display
+
+```{r}
+barchartGC(~love_first + extra_life,data=mydata, xlab='love at first sight')
+```
+
+People who believe in love at first sight also tend believe life on other planets. 
+
+
+Numerical Summary
+
+```{r}
+table1 <- xtabs(~love_first + extra_life, data=mydata)
+rowPerc(table1)
+colPerc(table1)
+```
+There is not much of a difference between people who do believe in love at first sight and those who belive in life on other planets.
+
+Inference
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+We fail to reject the null hypothesis. There is no evidence to support the contention of the relationship between love at first sight and extraterrestrial life. The p-value is bigger than 0.05.
+
 # Your second Question  
 
 ### Is there a difference between boys and girls with respect to belief in life on other planets?
-  
+
+$H_0$ there is no difference between boys and girls with respect to belief in life on other planets  
+$H_A$ there is a difference between boys and girls with respect to belief in life on other planets
  
- 
+Graphical Display 
+
+```{r}
+barchartGC(~extra_life + sex,data=mydata, xlab= 'believe in life on other planets')
+```
+
+There is no relationship between girls and boys with respect to their belief in life on other planets.
+
+
+Numerical Summary
+
+```{r}
+table1 <- xtabs(~extra_life + sex, data=mydata)
+rowPerc(table1)
+colPerc(table1)
+```
+The summary shows a big difference between sex and their belief in life in other planets.
+
+Inference
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+We reject the null hypothesis because the p-value is higher than 0.05.
+
 # Your last Question   
 
 ### Is there a difference between boys and girls with respect to belief in love at First sight?
+
+$H_0$ there is no relation between boys and girls with respect to belief in love at first sight   
+$H_A$ there is relation between boys and girls with respect to belief in love at first sight 
+
+Graphical Display
+```{r}
+barchartGC(~love_first + sex,data=mydata, xlab= 'believe in love at first life')
+```
+
+There is a relation between boys and girls with respect to their belief in love at first sight. 
+
+
+Numerical Display
+```{r}
+table1 <- xtabs(~love_first + sex, data=mydata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+There is a big similarity between boys and girls and their belief in love at first class.
+
+Inference
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+We fail to reject the null hypothesis because the p-value is bigger than .05
